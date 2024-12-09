@@ -23,8 +23,14 @@ Router.post("/signup", async (req,res)=>{
             role:user.role
 
         })
-        dbUser.save();
-        res.send("accoutn create")
+        await dbUser.save();
+        let token = jwt.sign({ email:user.email, role:user.role }, "abcxyz");
+        console.log(token, "tokennnnnnn");
+         res.status(201).send({ token, message: "Account created successfully" });
+        // res.send({ token },"accoutn create");
+        // res.send("accoutn create")
     }
+
+    
 })
 module.exports = Router

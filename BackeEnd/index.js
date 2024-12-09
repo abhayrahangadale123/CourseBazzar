@@ -2,6 +2,7 @@ let express =require("express");
  let app = express();
  let jwt = require("jsonwebtoken")
  let cors = require("cors")
+ let forgetRouter=require('./router/forgest')
  app.use(cors())
 
 let mongoose = require("mongoose");
@@ -40,6 +41,8 @@ app.get("/",(req,res)=>{
 app.use("/api",signup)
 //Login call
 app.use("/api",Login)
+// forgest password
+app.use('/api',forgetRouter) 
 
 
 function checkRole(role){
@@ -49,7 +52,7 @@ function checkRole(role){
             return res.send("unauthorization user");
         }
         else{
-           let decodeToken = jwt.verify(token,"abcxyz");
+           let decodeToken = jwt.verify(token,process.env.jwt_key);
        
            
            if(decodeToken.role!=role){

@@ -14,7 +14,7 @@ Router.post("/login", async (req, res) => {
         let vaildData = await bcrypt.compare(user.password,data.password);
         if (vaildData) {
        
-            let token = jwt.sign({ email:data.email, role:data.role }, "abcxyz");
+            let token = jwt.sign({ email:data.email, role:data.role }, process.env.jwt_key);
             console.log(token, "tokennnnnnn");
             res.send({ token });
         }
