@@ -2,18 +2,19 @@ let express =require("express");
  let app = express();
  let jwt = require("jsonwebtoken")
  let cors = require("cors")
- let forgetRouter=require('./router/forgest')
  app.use(cors())
-
-let mongoose = require("mongoose");
  
-const env = require('dotenv');
-env.config();
-const port = process.env.PORT;
-
-
-let signup = require("../BackeEnd/router/singup")
-let Login = require("../BackeEnd/router/Login")
+ let mongoose = require("mongoose");
+ 
+ const env = require('dotenv');
+ env.config();
+ const port = process.env.PORT;
+ 
+ 
+ let signup = require("../BackeEnd/router/singup")
+ let Login = require("../BackeEnd/router/Login")
+ let forgetRouter=require('./router/forgest')
+ let Reset_Pass = require("../BackeEnd/router/Reset_Pass")
 
 
 // midle were json ka
@@ -43,6 +44,8 @@ app.use("/api",signup)
 app.use("/api",Login)
 // forgest password
 app.use('/api',forgetRouter) 
+// reset_Password
+app.use("/api",Reset_Pass)
 
 
 function checkRole(role){
