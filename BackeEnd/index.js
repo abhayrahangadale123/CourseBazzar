@@ -15,6 +15,8 @@ let express =require("express");
  let Login = require("../BackeEnd/router/Login")
  let forgetRouter=require('./router/forgest')
  let Reset_Pass = require("../BackeEnd/router/Reset_Pass")
+ let Course = require("../BackeEnd/router/Course")
+ let GetAllCourse = require("../BackeEnd/router/GetAllCourse")
 
 
 // midle were json ka
@@ -46,6 +48,12 @@ app.use("/api",Login)
 app.use('/api',forgetRouter) 
 // reset_Password
 app.use("/api",Reset_Pass)
+// Course api
+app.use("/api",Course)
+//  GetAllCourse api
+app.use("/api",GetAllCourse)
+
+
 
 
 function checkRole(role){

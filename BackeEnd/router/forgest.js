@@ -18,7 +18,8 @@ router.post('/forgot-password', async (req, res) => {
    await user.save();
 
 
-   const resetUrl = `${req.protocol}://${req.get('host')}/api/reset-password/${resetToken}`;  // email me send link
+  //  const resetUrl = `${req.protocol}://${req.get('host')}/api/reset-password/${resetToken}`;  // email me send link
+   const resetUrl = `http://localhost:5173//api/reset-password/${resetToken}`;
    await sendEmail(
      user.email,
      'Password Reset Request',
