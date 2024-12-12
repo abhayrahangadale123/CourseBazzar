@@ -2,7 +2,8 @@ let express=  require('express')
 const User = require("../Models/userModel");
 let router=   express.Router()
 const crypto = require('crypto');
-let {sendEmail} = require('../utils/SendEmail')
+let {sendEmail} = require('../utils/SendEmail');
+const { log } = require('console');
 router.post('/forgot-password', async (req, res) => {
  const { email } = req.body;
  try {
@@ -19,7 +20,9 @@ router.post('/forgot-password', async (req, res) => {
 
 
   //  const resetUrl = `${req.protocol}://${req.get('host')}/api/reset-password/${resetToken}`;  // email me send link
-   const resetUrl = `http://localhost:5173//api/reset-password/${resetToken}`;
+  
+   const resetUrl = `http://localhost:5173/api/reset-password/${resetToken}`;
+  console.log(resetUrl,"mmmmmmmmmmm");
    await sendEmail(
      user.email,
      'Password Reset Request',

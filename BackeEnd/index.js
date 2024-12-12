@@ -56,36 +56,7 @@ app.use("/api",GetAllCourse)
 
 
 
-function checkRole(role){
-    return(req,res,next)=>{
-        let token = req.headers.authorization;
-        if(!token){
-            return res.send("unauthorization user");
-        }
-        else{
-           let decodeToken = jwt.verify(token,process.env.jwt_key);
-       
-           
-           if(decodeToken.role!=role){
-            return res.send("acesss denideeeee")
-           }
-           else{
-            next();
-           }
-        }
-    }
-}
-
-// tokan create and fillter data Admin ka ya user ka haiiiiiii
-
-app.get("/admin",checkRole("admin"),(req,res)=>{
-    res.send("admin accesss onlyyyy admin")
-})
-app.get("/student",checkRole("student"),(req,res)=>{
-    res.send("user access onlyyyyy user")
-})
-
-
+ 
 app.listen(port||8000,(req,res)=>{
     console.log(`server connect and working  port no ${port}`);
     

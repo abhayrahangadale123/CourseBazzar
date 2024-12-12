@@ -9,7 +9,7 @@ router.get("/AllCourse", async (req,res)=>{
     
     let showCourse = await courseSchema.find();
     res.send(showCourse);
-    // console.log(showCourse);
+    
     
 })
 module.exports=router
