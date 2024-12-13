@@ -15,7 +15,8 @@ function checkRole(role){
            
        
            
-           if(decodeToken.role!=role){
+        //    if(decodeToken.role!=role){  // this right and ..
+        if (!role.includes(decodeToken.role)) {  // this is also right..
             return res.send("acesss denideeeee")
            }
            else{

@@ -4,7 +4,7 @@ let router = express.Router();
 const { model } = require("mongoose");
 let checkRole = require("../Middlewere/CheckRole")
 
-router.post("/course", checkRole("admin") , async   (req,res)=>{
+router.post("/course", checkRole(['admin','Instructor']) , async   (req,res)=>{
     let course = req.body;
     
    

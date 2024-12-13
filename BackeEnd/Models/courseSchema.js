@@ -10,6 +10,7 @@ const courseSchema = new mongoose.Schema({
     // instructor: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     status: { type: String, enum: ['Pending', 'Approved', 'Rejected'], default: 'Pending' },
     videos: [{ type: String }],
+    image: [{ type: String }],
     resources: [{ type: String }],
 },
 
