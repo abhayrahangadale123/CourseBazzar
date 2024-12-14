@@ -17,6 +17,8 @@ let express =require("express");
  let Reset_Pass = require("../BackeEnd/router/Reset_Pass")
  let Course = require("../BackeEnd/router/Course")
  let GetAllCourse = require("../BackeEnd/router/GetAllCourse")
+ let ApprovedStatus=require("../BackeEnd/router/CheckStatus")
+ let RejectStatus=require("../BackeEnd/router/CheckStatus")
 
 
 // midle were json ka
@@ -52,6 +54,10 @@ app.use("/api",Reset_Pass)
 app.use("/api",Course)
 //  GetAllCourse api
 app.use("/api",GetAllCourse)
+// CheckStatus ApprovedStatus api
+app.use("/api",ApprovedStatus)
+// CheckStatus RejectStatus  api
+app.use("/api",RejectStatus)
 
 
 

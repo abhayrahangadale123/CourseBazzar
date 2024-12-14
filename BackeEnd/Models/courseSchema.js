@@ -12,6 +12,9 @@ const courseSchema = new mongoose.Schema({
     videos: [{ type: String }],
     image: [{ type: String }],
     resources: [{ type: String }],
+    reason:{
+        type:String,
+        default:"course is not good "}
 },
 
     { timestamps: true });

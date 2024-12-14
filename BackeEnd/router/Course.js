@@ -9,8 +9,8 @@ router.post("/course", checkRole(['admin','Instructor']) , async   (req,res)=>{
     
    
     console.log(course);
-    
-    let dbUser = await courseSchema.create({
+     let dbUser = await courseSchema.create({
+   
         title:course.title,
         description:course.description,
         category:course.category,
@@ -19,6 +19,7 @@ router.post("/course", checkRole(['admin','Instructor']) , async   (req,res)=>{
         language:course.language,
         status:course.status,
         videos:course.videos,
+        image:course.image,
         resources:course.resources       
 
     })
