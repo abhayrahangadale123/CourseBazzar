@@ -19,6 +19,8 @@ let express =require("express");
  let GetAllCourse = require("../BackeEnd/router/GetAllCourse")
  let ApprovedStatus=require("../BackeEnd/router/CheckStatus")
  let RejectStatus=require("../BackeEnd/router/CheckStatus")
+ let review = require("../BackeEnd/router/review")
+ let UserCount = require("../BackeEnd/router/UserCount")
 
 
 // midle were json ka
@@ -37,9 +39,6 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
     
 })
 
-app.get("/",(req,res)=>{
-    res.send("Final connectionssssssssss");
-})
 
 
 //singup call
@@ -58,6 +57,10 @@ app.use("/api",GetAllCourse)
 app.use("/api",ApprovedStatus)
 // CheckStatus RejectStatus  api
 app.use("/api",RejectStatus)
+//  review  api
+app.use("/api",review)
+//  user count  api user kitne hai
+app.use("/api",UserCount)
 
 
 

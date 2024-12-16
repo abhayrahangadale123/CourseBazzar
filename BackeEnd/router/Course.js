@@ -2,9 +2,9 @@ let express = require("express");
 const courseSchema = require("../Models/courseSchema");
 let router = express.Router();
 const { model } = require("mongoose");
-let checkRole = require("../Middlewere/CheckRole")
+let {protect,createCourse} = require("../Middlewere/CheckRole")
 
-router.post("/course", checkRole(['admin','Instructor']) , async   (req,res)=>{
+router.post("/course",protect,createCourse,  async   (req,res)=>{
     let course = req.body;
     
    

@@ -2,9 +2,9 @@ let express = require("express")
 let router = express.Router()
 
 const CourseSchema = require("../Models/courseSchema");
-const checkRole = require("../Middlewere/CheckRole");
+const {protect,adminProtect} = require("../Middlewere/CheckRole");
 
-router.post("/ApprovedStatus", checkRole("admin"), async (req, res) => {
+router.post("/ApprovedStatus",protect,adminProtect, async (req, res) => {
 
     let { _id } = req.body;
     console.log(_id);
@@ -23,7 +23,7 @@ router.post("/ApprovedStatus", checkRole("admin"), async (req, res) => {
 
 
 // reject course....
-router.post("/RejectStatus", checkRole("admin"), async (req, res) => {
+router.post("/RejectStatus",protect,adminProtect, async (req, res) => {
 
     let { _id,reason} = req.body;
     console.log(_id);
