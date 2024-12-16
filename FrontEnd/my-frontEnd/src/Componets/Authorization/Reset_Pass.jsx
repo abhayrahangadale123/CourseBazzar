@@ -2,29 +2,34 @@ import React, { useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from "axios";
-const Login = () => {
+const  Reset_Pass = () => {
 
-    let [LoginData, SetLogoinData] = useState({
+    let [ResetData, SetResetData] = useState({
         email:"",
-        password:""
+        newPassword:""
       
     })
+    const {token} = useParams();
 
-    let heandlogindata = (e) => {
+    let heandResetdata = (e) => {
         e.preventDefault();
 
         let { name, value } = e.target;
-        SetLogoinData({ ...LoginData, [name]: value })
+        SetResetData({ ...ResetData, [name]: value })
         console.log("n", name, "v", value);
+        
     }
     let handleSubmit = async (e) => {
         e.preventDefault();
-        let res = await axios.post("http://localhost:3000/api/login", LoginData);
+    
+        let res = await axios.post(`http://localhost:3000/api/reset-password/${token}`, ResetData);
+
+        // let res = await axios.post("http://localhost:3000/api/forgot-password", LoginData);
         console.log(res);
-         
-       
+        SetResetData('')
+
 
     }
 
@@ -48,11 +53,9 @@ const Login = () => {
                 <div className="  bg-white shadow-md rounded-lg p-8 w-[35%]"
                     onClick={(e) => e.stopPropagation()}>
                     <h1 className="text-3xl font-bold text-gray-800 text-center mb-4">
-                        Log in to continue your   <br />  learning journey
+                        Reset Your password
                     </h1>
-                    <p className="text-gray-600 text-center mb-6">
-                        Discover a supportive community of online instructors. Get instant access to all course creation resources.
-                    </p>
+                   
 
             <form onSubmit={handleSubmit}>
                     <div className="flex flex-col space-y-4 ">
@@ -61,61 +64,44 @@ const Login = () => {
                             type="email"
                             placeholder="Email"
                             name="email"
-                            value={LoginData.email}
+                            value={ResetData.email}
                             
-                            onChange={heandlogindata}
+                            onChange={heandResetdata}
                             className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
                         />
                         <input
                             type="password"
                             placeholder="pass"
-                            name="password"
-                            value={LoginData.password}
+                            name="newPassword"
+                            value={ResetData.newPassword}
                             
-                            onChange={heandlogindata}
+                            onChange={heandResetdata}
                             className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
                         />
+                       
                         {/* Buttons */}
                         <button className="bg-purple-600 text-white font-bold py-4 rounded-lg hover:bg-purple-700">
-                            Continue with email
+                             Update
                         </button>
                     </div>
 
-                    <p className='mt-6 text-center'>----- Other log in options --------</p>
-                    <div className="flex justify-center mt-5 gap-5 ">
-                        <span className='border  p-2'>
-
-                            <FcGoogle />
-                        </span>
-                        <span className='border p-2'>
-
-                            <FaFacebook />
-                        </span>
-                        <span className='border p-2'>
-
-                            <FaApple />
-                        </span>
-                        <img src="" alt="" />
-                    </div>
+                     
 
                     <p className='text-center mt-10 p-4 rounded-lg'>
                         Don't have an account?
-                        <Link to="/singup">
-                            <span className='text-purple-600 font-bold underline'>Sign up</span>
+                        <Link to="/login">
+                            <span className='text-purple-600 font-bold underline'>login</span>
                         </Link>
                     </p>
-                    <p className="text-center p-4 rounded-lg">
-                        <Link to="/Forget_pass">
-                            <span className='text-purple-600 font-bold underline'>forget password</span>
-                        </Link>
-                    </p>
+ 
 
-                    <p className='text-center text-purple-600 font-bold underline mt-5'>Log in with your organization</p>
+                    
             </form>
                 </div>
         </div>
     );
 
 }
+ 
 
-export default Login
+export default Reset_Pass

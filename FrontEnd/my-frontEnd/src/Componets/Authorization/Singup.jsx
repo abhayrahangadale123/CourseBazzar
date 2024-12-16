@@ -14,6 +14,8 @@ const Signup = () => {
 
     // Handle input changes
     const handleChange = (e) => {
+         
+
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
@@ -86,6 +88,7 @@ const Signup = () => {
                         <div className="flex items-start">
                             <input
                                 type="checkbox"
+                                required
                                 className="mt-1 w-8 h-4 border-gray-300 rounded focus:ring-purple-500"
                             />
                             <p className="ml-2 text-gray-600">

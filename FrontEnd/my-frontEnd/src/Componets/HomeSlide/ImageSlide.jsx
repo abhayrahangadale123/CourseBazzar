@@ -19,6 +19,7 @@ const  ImageSlide = () => {
             title: "Take your career to the next level",
             description: "Prep for industry-recognized certifications by solving real-world challenges and earn badges along the way."
         }
+        
     ];
 
     // State to keep track of the current slide index

@@ -16,8 +16,12 @@ const  NavBar = () => {
         <div className='max-w-[1400px] mx-auto'>
             <div className='flex items-center gap-5  h-[80px]'>
 
-                <div className='w-[91px] h-[34px]'>
-                    <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="" />
+                {/* <div className='w-[91px] h-[34px]'> */}
+                <div className='w-[120px] h-[125px] '>
+                    <Link to="/">
+                   
+                    <img src="https://logo-variant.algo.design.vpsvc.com/675eb771001d5c6c82a7195d?sign=42468dacf306696d99aafe2d82e1ea6070540b881166b04a901cb5069e1a760e&backgroundMode=TRANSPARENT&type=PNG&width=400&height=400" alt="" />
+                    </Link>
                 </div>
 
 
