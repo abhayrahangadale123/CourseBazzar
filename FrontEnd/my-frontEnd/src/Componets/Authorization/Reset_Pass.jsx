@@ -60,15 +60,7 @@ const  Reset_Pass = () => {
             <form onSubmit={handleSubmit}>
                     <div className="flex flex-col space-y-4 ">
 
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            name="email"
-                            value={ResetData.email}
-                            
-                            onChange={heandResetdata}
-                            className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                        />
+                        
                         <input
                             type="password"
                             placeholder="pass"

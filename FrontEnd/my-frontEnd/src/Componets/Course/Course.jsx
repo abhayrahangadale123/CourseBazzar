@@ -7,21 +7,6 @@ const Course = () => {
     const Courses = useContext(Context)
     console.log(Courses);
     
-    // useEffect( ()=>{
-    //   const fetchCourses = async () => {
-    //     try {
-    //         const res = await axios.get("http://localhost:3000/api/AllCourse");
-    //         console.log(res.data,'hheheh'); // Log the fetched data
-    //         SetCourse(res.data); // Update state
-    //         console.log(Courses,"ccc");
-            
-    //     } catch (error) {
-    //         console.error("Error fetching courses:", error); // Log any errors
-    //     }
-    // };
-
-    // fetchCourses(); 
-    // },[])
     return (
       <div>
                  <div className="overflow-x-auto whitespace-nowrap p-4 bg-gray-100 max-w-[1400px] mx-auto ">

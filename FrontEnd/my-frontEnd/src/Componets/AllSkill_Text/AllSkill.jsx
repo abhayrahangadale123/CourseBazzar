@@ -1,17 +1,29 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Tabs from "./Tabs";
 import Filter01 from './Filter01';
+import { Context } from '../../../Contex';
 const AllSkill = () => {
   const [activeTab, setActiveTab] = useState("Data Science");
+const Courses = useContext(Context)
 
-    const tabs = [
-        "Data Science",
-        "IT Certifications",
-        "Leadership",
-        "Web Development",
-        "Communication",
-        "Business Analytics & Intelligence",
+let subject = Courses.map((course)=>{
+    return course.category;
+})
+console.log(subject,"ssssssssssssssss");
+
+let filterCard = subject.set()
+
+    const tabs = [ ...subject
+        // "Data Science",
+        // "IT Certifications",
+        // "Leadership",
+        // "Web Development",
+        // "Communication",
+        // "Business Analytics & Intelligence",
     ];
+    console.log(filterCard);
+    
+ 
 
 
 

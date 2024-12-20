@@ -7,6 +7,7 @@ import ImageSlide from '../HomeSlide/ImageSlide'
 import AllSkill from '../AllSkill_Text/AllSkill'
 import Course from '../Course/Course'
  
+ 
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
       <ImageSlide/>
       <AllSkill/>
       <Course/>
+      
    
     
     
