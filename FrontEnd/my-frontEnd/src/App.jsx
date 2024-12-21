@@ -10,6 +10,8 @@ import NavBarOne from './Componets/NavBarOne/NavBarOne'
 import NavBarTwo from './Componets/NavbarTwo/NavBarTwo'
 import Forget_Pass from './Componets/Authorization/Forget_Pass'
 import Reset_Pass from './Componets/Authorization/Reset_Pass'
+import CreateCourse from './Componets/CreateCourse/CreateCourse'
+import StoreAll from './Componets/AllSkill_Text/AllCourseDetials/StoreAll'
  
 
 function App() {
@@ -25,6 +27,10 @@ function App() {
       <Route path="/Login" element={<Login/>}></Route>
       <Route path="/Forget_pass" element={<Forget_Pass/>}></Route>
       <Route path="/api/reset-password/:token" element={<Reset_Pass/>}></Route>
+      <Route path="/CreateCourse" element={<CreateCourse/>}></Route>
+
+        {/* All Course details */}
+        <Route path="/Course-detail" element={<StoreAll/>} />
  
      </Routes>
      <Footer/>

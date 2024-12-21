@@ -1,11 +1,20 @@
 import axios from 'axios';
 import React, { useContext } from 'react'
 import { Context } from '../../../Contex';
+import CourseFilter from './CourseFillter';
 
 const Course = () => {
      
-    const Courses = useContext(Context)
-    console.log(Courses);
+    const {activeTab} = useContext(Context)
+    // console.log(Courses);
+  
+    const Courses  = CourseFilter({ activeTab });
+    console.log(Courses,"cycycycycycyycycyc");
+    
+    
+    console.log(Courses.videos,"vvvvvvvvvvvvvvvvv");
+    
+
     
     return (
       <div>
@@ -16,8 +25,8 @@ const Course = () => {
                         key={index}
                         className="min-w-[300px] w-[300px] h-[330px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden"
                     >
-                        <img
-                            src={course.image}
+                        <video
+                            src={course.videos} controls
                             alt="Course Thumbnail"
                             className="w-full h-44 object-cover"
                         />

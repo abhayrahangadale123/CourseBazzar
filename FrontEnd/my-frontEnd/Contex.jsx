@@ -7,6 +7,8 @@ let Context = createContext();
 function MyComponent({ children }) {
 
   let [Courses, SetCourse] = useState([]);
+  const [activeTab, setActiveTab] = useState("All Course");
+   
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -25,7 +27,7 @@ function MyComponent({ children }) {
 
 
   return (
-    <Context.Provider value={Courses}>
+    <Context.Provider value={{Courses,activeTab,setActiveTab}}>
       {children}
     </Context.Provider>
   );

@@ -1,28 +1,26 @@
 import React, { useContext, useState } from 'react'
 import Tabs from "./Tabs";
-import Filter01 from './Filter01';
+ 
 import { Context } from '../../../Contex';
 const AllSkill = () => {
-  const [activeTab, setActiveTab] = useState("Data Science");
-const Courses = useContext(Context)
+   
+const {Courses,activeTab,setActiveTab} = useContext(Context)
+console.log(Courses,"ctctcctctctctctcttt");
 
-let subject = Courses.map((course)=>{
-    return course.category;
-})
-console.log(subject,"ssssssssssssssss");
+// const [activeTab, setActiveTab] = useState("All Course");
 
-let filterCard = subject.set()
+ 
 
-    const tabs = [ ...subject
-        // "Data Science",
-        // "IT Certifications",
-        // "Leadership",
-        // "Web Development",
-        // "Communication",
-        // "Business Analytics & Intelligence",
-    ];
-    console.log(filterCard);
+let filterCard = new Set(Courses.map((course) => course.category))  // duplicate na ho web web bar bar aya rha h esliye set functions 
+console.log(filterCard ,"kesss");
+ 
+
+ 
+
+ 
+    const tabs = ["All course", ...filterCard ];
     
+ console.log(tabs,"tbtbtbtbtbtbtb");
  
 
 
@@ -39,8 +37,7 @@ let filterCard = subject.set()
                 <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 
 
-                {/* Skills Card */}
-                <Filter01 activeTab={activeTab} />
+               
 
             </div>
         </div>

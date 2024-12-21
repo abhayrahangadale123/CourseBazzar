@@ -22,6 +22,10 @@ const Login = () => {
     let handleSubmit = async (e) => {
         e.preventDefault();
         let res = await axios.post("http://localhost:3000/api/login", LoginData);
+        if(res.data.token){
+            localStorage.setItem('token',res.data.token);
+            alert("login succesfully");
+        }
         console.log(res);
          
        
