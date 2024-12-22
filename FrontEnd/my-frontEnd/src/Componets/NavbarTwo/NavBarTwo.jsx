@@ -7,22 +7,22 @@ const NavBarTwo = () => {
        
       <nav className="  flex  justify-center md:gap-80  p-3  text-sm text-[#595858] mt-[-32px] shadow-xl">
         <div className="flex gap-10 mr-10 cursor-pointer ">
-          <Link to="/Movies_Jabalpur">
+          <Link to="/Development">
             <p>Development</p>
           </Link>
-          <Link to="/Music_Jabalpur">
+          <Link to="/Business">
             <p>Business</p>
           </Link>
-          <Link to="/Event_Jabalpur">
+          <Link to="/Finace">
             <p>Finace & Accounting</p>
           </Link>
-          <Link to="/Play_Jabalpur">
+          <Link to="/IT_Software">
             <p>IT & Software</p>
           </Link>
-          <Link to="/Sport_Jabalpur">
+          <Link to="/Productivity">
             <p>Office Productivity</p>
           </Link>
-          <Link to="/Activities_Jabalpur">
+          <Link to="/Personal_Development">
             <p>Personal Development</p>
           </Link>
         

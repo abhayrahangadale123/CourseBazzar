@@ -8,6 +8,7 @@ function MyComponent({ children }) {
 
   let [Courses, SetCourse] = useState([]);
   const [activeTab, setActiveTab] = useState("All Course");
+  const [cartData, setCartData] = useState([])
    
   useEffect(() => {
     const fetchCourses = async () => {
@@ -27,7 +28,7 @@ function MyComponent({ children }) {
 
 
   return (
-    <Context.Provider value={{Courses,activeTab,setActiveTab}}>
+    <Context.Provider value={{Courses,activeTab,setActiveTab,cartData, setCartData}}>
       {children}
     </Context.Provider>
   );

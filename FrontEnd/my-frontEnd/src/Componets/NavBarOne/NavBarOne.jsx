@@ -38,7 +38,9 @@ const  NavBar = () => {
                     <li className='list-none text-zinc-700 cursor-pointer'>Plane & Pricing</li>
                     <li className='list-none text-zinc-700 cursor-pointer'>Udamy Business</li>
                     <li className='list-none text-zinc-700 cursor-pointer'>Teach on Udamy</li>
+                    <Link to="Add-card">
                     <li className='list-none text-zinc-700 text-2xl cursor-pointer ml-5'><MdOutlineShoppingCart /></li>
+                    </Link>
                      
                    <Link to="/Login">
                     <button className='border border-zinc-600 rounded py-[8px] w-[80px]'>Log in</button>

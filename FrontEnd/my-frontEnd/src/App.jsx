@@ -12,6 +12,7 @@ import Forget_Pass from './Componets/Authorization/Forget_Pass'
 import Reset_Pass from './Componets/Authorization/Reset_Pass'
 import CreateCourse from './Componets/CreateCourse/CreateCourse'
 import StoreAll from './Componets/AllSkill_Text/AllCourseDetials/StoreAll'
+import AddTocard from './Componets/AllSkill_Text/AddTocard'
  
 
 function App() {
@@ -30,7 +31,8 @@ function App() {
       <Route path="/CreateCourse" element={<CreateCourse/>}></Route>
 
         {/* All Course details */}
-        <Route path="/Course-detail" element={<StoreAll/>} />
+        <Route path="/Course-detail/:id" element={<StoreAll/>} />
+        <Route path="/Add-card" element={<AddTocard/>} />
  
      </Routes>
      <Footer/>
