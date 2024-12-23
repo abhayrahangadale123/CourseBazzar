@@ -21,6 +21,8 @@ let express =require("express");
  let RejectStatus=require("../BackeEnd/router/CheckStatus")
  let review = require("../BackeEnd/router/review")
  let UserCount = require("../BackeEnd/router/UserCount")
+ let Peyment = require("../BackeEnd/router/Peyment")
+ let  ChatBot = require("../BackeEnd/router/ChatBot")
 
 
 // midle were json ka
@@ -61,6 +63,10 @@ app.use("/api",RejectStatus)
 app.use("/api",review)
 //  user count  api user kitne hai
 app.use("/api",UserCount)
+//  payement  api user kitne hai
+app.use("/api",Peyment)
+//  ChatBot  api user kitne hai
+app.use("/api",ChatBot)
 
 
 
