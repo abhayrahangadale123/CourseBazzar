@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { Context } from '../../../../Contex';
 import AddTocard from '../AddTocard';
+ 
 
 const PriceMoney = () => {
   
@@ -17,7 +18,7 @@ const PriceMoney = () => {
    console.log(SingleData,"ssssingleeee");
    
    function addCart() {
-    setCartData((prevCarts) => [...prevCarts, SingleData]);
+    setCartData((prevCarts) =>[...prevCarts, SingleData]);  // set duplicate na jaye
     console.log(cartData,"card jiiii");
     
 }
@@ -25,8 +26,8 @@ console.log(addCart,"addddddddddddd");
 
   return (
      
-        <div className="min-h-screen  flex items-center justify-center z-[-1] ">
-            <div className="bg-white shadow-md rounded-lg max-w-[400px] p-6">
+        <div className="   flex items-center justify-center z-[-10px] mt-20">
+            <div className=" bg-white shadow-md rounded-lg max-w-[400px] z-  p-6">
                 {/* Course Header */}
                 <div className="flex flex-col items-center w-full">
                     <video
@@ -49,10 +50,10 @@ console.log(addCart,"addddddddddddd");
                         Get this course, plus 12,000+ of our top-rated courses, with Personal Plan.
                         <a href="#" className="text-purple-600 underline"> Learn more</a>
                     </p>
-                    <button className="w-full bg-purple-600 text-white py-3 rounded-lg mt-4 hover:bg-purple-700">
+                    <button className="w-full bg-purple-600 text-white py-3 rounded-lg mt-4 hover:bg-purple-700 ">
                         Start subscription
                     </button>
-                    <p className="text-center text-sm text-gray-600 mt-2">Starting at ₹850 per month<br />Cancel anytime</p>
+                    {/* <p className="text-center text-sm text-gray-600 mt-2">Starting at ₹850 per month<br />Cancel anytime</p> */}
 
                     <div className="flex items-center justify-center mt-4">
                         <div className="w-full border-b border-gray-300"></div>

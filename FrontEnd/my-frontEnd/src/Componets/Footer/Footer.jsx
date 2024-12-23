@@ -47,7 +47,7 @@ const Footer = () => {
                             <li className="mb-2 duration-500 cursor-pointer hover:text-white">Accessibility statement</li>
                         </ul>
                         <div className="flex items-center space-x-2 absolute right-16">
-                            <TbWorld className="text-2xl" />
+                            <TbWorld className="text-2xl " />
                             <button className="border border-gray-400 px-5 py-2 rounded duration-500 hover:border-white">
                                 English
                             </button>

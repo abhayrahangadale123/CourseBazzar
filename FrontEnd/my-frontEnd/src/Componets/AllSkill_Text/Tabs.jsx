@@ -25,9 +25,11 @@
 
 // export default Tabs
 
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context } from '../../../Contex';
 
-const Tabs = ({ activeTab, tabs, setActiveTab }) => {
+const Tabs = ({  tabs }) => {
+    const {  activeTab ,setActiveTab} = useContext(Context);
     console.log(activeTab,"active tab aya gaya Tabs ssss");
     
     return (

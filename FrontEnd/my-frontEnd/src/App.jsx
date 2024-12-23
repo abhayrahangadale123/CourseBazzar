@@ -13,6 +13,7 @@ import Reset_Pass from './Componets/Authorization/Reset_Pass'
 import CreateCourse from './Componets/CreateCourse/CreateCourse'
 import StoreAll from './Componets/AllSkill_Text/AllCourseDetials/StoreAll'
 import AddTocard from './Componets/AllSkill_Text/AddTocard'
+import Chatbot from './Componets/Pages/ChatBot'
  
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         {/* All Course details */}
         <Route path="/Course-detail/:id" element={<StoreAll/>} />
         <Route path="/Add-card" element={<AddTocard/>} />
+        <Route path="/Chat" element={<Chatbot/>} />
  
      </Routes>
      <Footer/>

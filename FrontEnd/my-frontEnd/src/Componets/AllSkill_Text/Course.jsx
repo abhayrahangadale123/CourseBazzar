@@ -93,13 +93,15 @@ import axios from 'axios';
 
 const Course = () => {
   const { Courses, activeTab } = useContext(Context); // Assuming Courses comes from Context
+ console.log(Courses,"ccccccccccccccccccccyyyyy");
  
   const navigate = useNavigate();
 
   
-      const filtered = activeTab === "All Course"  ? Courses  : Courses.filter(course => course.category === activeTab);
+      const filtered = activeTab == "All Course"  ? Courses  : Courses.filter(course => course.category === activeTab);
      
-
+   console.log(filtered,"ffffffffffffffffffffffffffffffffffffffffff");
+   
   const handleViewDetails = (id) => {
     console.log(id,"iddddffff");
     

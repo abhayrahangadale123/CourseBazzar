@@ -1,15 +1,18 @@
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { IoSearch } from "react-icons/io5";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { TbWorld } from "react-icons/tb";
  
 import { Link } from 'react-router-dom';
+import { Context } from '../../../Contex';
 
 
 
 const  NavBar = () => {
-   
+    const { cartData } = useContext(Context); // only count ke liye add krne me kitne course hai 
+    console.log(cartData.length,"lengthhhhh");
+    
     return (
         <>
          
@@ -39,7 +42,8 @@ const  NavBar = () => {
                     <li className='list-none text-zinc-700 cursor-pointer'>Udamy Business</li>
                     <li className='list-none text-zinc-700 cursor-pointer'>Teach on Udamy</li>
                     <Link to="Add-card">
-                    <li className='list-none text-zinc-700 text-2xl cursor-pointer ml-5'><MdOutlineShoppingCart /></li>
+                    <span className='text-purple-600 absolute mt-[-15px] ml-10'>{cartData.length}</span>
+                    <li className='list-none text-zinc-700 text-2xl cursor-pointer ml-5 relative'><MdOutlineShoppingCart /></li>
                     </Link>
                      
                    <Link to="/Login">

@@ -18,7 +18,7 @@ console.log(filterCard ,"kesss");
  
 
  
-    const tabs = ["All course", ...filterCard ];
+    const tabs = ["All Course", ...filterCard ];  // tab ek array hai jise hmm itreet kr sakte hai go to tab file
     
  console.log(tabs,"tbtbtbtbtbtbtb");
  
