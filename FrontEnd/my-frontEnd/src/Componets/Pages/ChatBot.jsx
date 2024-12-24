@@ -1,92 +1,99 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const ChatBot = () => {
+    const [messages, setMessages] = useState([]);
+    const [input, setInput] = useState("");
+
+    // Function to handle message submission
+    const SendMessage = async () => {
+        if (input.trim() === "") return;
+
+        // Add the user message to the chat
+        const userMessage = { role: "user", content: input };
+        setMessages((prevMessages) => [...prevMessages, userMessage]);
+
+        try {
+            // Make an API call to get the chatbot response
+            const response = await axios.post("http://localhost:3000/api/chat", {
+                message: input,
+            });
+
+            // Add the chatbot's response to the chat
+            const botMessage = { role: "bot", content: response.data.result };
+            setMessages((prevMessages) => [...prevMessages, botMessage]);
+
+            // Clear the input field
+            setInput("");
+        } catch (error) {
+            console.error("Error communicating with chatbot:", error);
+            const errorMessage = {
+                role: "bot",
+                content: "Sorry, there was an error. Please try again later.",
+            };
+            setMessages((prevMessages) => [...prevMessages, errorMessage]);
+        }
+    };
 
 
-import React, { useState } from "react";
+    const handleKeyPress = (e) => {
+      if (e.key === "Enter") SendMessage();
+    };
+  
+    // Scroll to the bottom when messages update
+    useEffect(() => {
+      const chatBox = document.querySelector(".overflow-y-auto");
+      if (chatBox) chatBox.scrollTop = chatBox.scrollHeight;
+    }, [messages]);
 
-const Chatbot = () => {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
+    
 
-  const sendMessage = async () => {
-    if (!input.trim()) return;
-
-    const userMessage = { sender: "user", text: input };
-    setMessages([...messages, userMessage]);
-
-    try {
-      // Send message to the backend
-      const response = await fetch("http://localhost:3000/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message: input }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch response from the server");
-      }
-
-      const data = await response.json(); // Parse the JSON response
-      console.log(data,"data from chat");
-      
-      const botMessage = { sender: "bot", text: data.result };
-console.log(botMessage,"bottt");
-
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-    } catch (error) {
-      console.error("Error:", error.message);
-      const errorMessage = { sender: "bot", text: "Error: Unable to connect." };
-      setMessages((prevMessages) => [...prevMessages, errorMessage]);
-    } finally {
-      setInput("");
-    }
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      sendMessage();
-    }
-  };
-
-  return (
-    <div className="flex flex-col items-center p-4">
-      <div className="w-full max-w-lg bg-gray-100 p-4 rounded-lg shadow-md">
-        <h1 className="text-xl font-bold mb-4 text-center">Chatbot</h1>
-
-        <div className="h-96 overflow-y-auto bg-white p-4 rounded-lg shadow-inner">
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`mb-2 p-2 rounded-lg ${
-                message.sender === "user"
-                  ? "bg-blue-500 text-white self-end"
-                  : "bg-gray-300 text-black self-start"
-              }`}
+    return (
+      <div className="flex flex-col items-center justify-center">
+        {/* Chatbot Container */}
+        <div className="w-full max-w-lg p-6 bg-white shadow-2xl rounded-lg">
+          {/* Header */}
+          <h1 className="text-3xl font-bold text-center mb-4 text-indigo-800">
+            My ChatBot ✨
+          </h1>
+  
+          {/* Chat Messages Section */}
+          <div className="chat-box h-80 overflow-y-auto p-4 bg-gray-100 rounded-lg shadow-inner">
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                className={`mb-3 p-3 rounded-lg shadow-md max-w-xs ${
+                  msg.role === "user"
+                    ? "bg-indigo-500 text-white self-end ml-auto"
+                    : "bg-gray-200 text-gray-900 self-start"
+                }`}
+              >
+                {msg.content}
+              </div>
+            ))}
+          </div>
+  
+          {/* Input Section */}
+          <div className="flex items-center mt-4">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Type your message..."
+              className="flex-grow p-3 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            <button
+              onClick={SendMessage}
+              className="px-4 p-[13px] bg-indigo-600 text-white rounded-r-lg hover:bg-indigo-700 transition duration-300"
             >
-              {message.text}
-            </div>
-          ))}
-        </div>
-
-        <div className="flex mt-4">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder="Type a message..."
-            className="flex-grow p-2 border rounded-l-lg focus:outline-none"
-          />
-          <button
-            onClick={sendMessage}
-            className="bg-blue-500 text-white px-4 rounded-r-lg hover:bg-blue-600"
-          >
-            Send
-          </button>
+              Send 
+            </button>
+          </div>
         </div>
       </div>
-    </div>
   );
+  
 };
 
-export default Chatbot;
+export default  ChatBot;

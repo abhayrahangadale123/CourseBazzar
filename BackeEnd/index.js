@@ -23,7 +23,7 @@ let express =require("express");
  let UserCount = require("../BackeEnd/router/UserCount")
  let Peyment = require("../BackeEnd/router/Peyment")
  let  ChatBot = require("../BackeEnd/router/ChatBot")
-
+ let FileUpload = require("../BackeEnd/router/FileUpload")
 
 // midle were json ka
 app.use(express.json())
@@ -54,6 +54,7 @@ app.use("/api",Reset_Pass)
 // Course api
 app.use("/api",Course)
 //  GetAllCourse api
+
 app.use("/api",GetAllCourse)
 // CheckStatus ApprovedStatus api
 app.use("/api",ApprovedStatus)
@@ -67,6 +68,8 @@ app.use("/api",UserCount)
 app.use("/api",Peyment)
 //  ChatBot  api user kitne hai
 app.use("/api",ChatBot)
+//  ChatBot  api user kitne hai
+app.use("/api",FileUpload)
 
 
 
