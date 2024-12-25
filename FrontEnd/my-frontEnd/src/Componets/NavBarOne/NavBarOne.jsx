@@ -6,12 +6,15 @@ import { TbWorld } from "react-icons/tb";
  
 import { Link } from 'react-router-dom';
 import { Context } from '../../../Contex';
+import UserMenu from '../Authorization/UserMenu';
 
 
 
 const  NavBar = () => {
     const { cartData } = useContext(Context); // only count ke liye add krne me kitne course hai 
     console.log(cartData.length,"lengthhhhh");
+
+    const token = localStorage.getItem("token");
     
     return (
         <>
@@ -37,7 +40,7 @@ const  NavBar = () => {
                     <input className='border-0 outline-none w-[100%]' type="text" placeholder='Search for anything...' />
                 </div>
 
-                <nav className='flex gap-5 items-center ml-10'>
+                <nav className='flex gap-5 items-center ml-5'>
                     <li className='list-none text-zinc-700 cursor-pointer'>Plane & Pricing</li>
                     <li className='list-none text-zinc-700 cursor-pointer'>Udamy Business</li>
                     <li className='list-none text-zinc-700 cursor-pointer'>Teach on Udamy</li>
@@ -46,7 +49,13 @@ const  NavBar = () => {
                     <li className='list-none text-zinc-700 text-2xl cursor-pointer ml-5 relative'><MdOutlineShoppingCart /></li>
                     </Link>
                      
-                   <Link to="/Login">
+                     {!token ?(
+
+                         
+                         <>
+                        
+                         
+                         <Link to="/Login">
                     <button className='border border-zinc-600 rounded py-[8px] w-[80px]'>Log in</button>
                    </Link>
                     <Link to="/singup">
@@ -54,7 +63,12 @@ const  NavBar = () => {
                         Sign up
                         </button>
                     </Link>
-                     
+                    </>
+                    ):(
+                        <div className="flex items-center gap-5 ml-4">
+                        <UserMenu/>
+                      </div>
+                    )}
                     <p className='bg-[#2d2f31]  rounded p-[11px] text-white cursor-pointer'><TbWorld className='text-xl font-semibold'/></p>
                 </nav>
             </div>

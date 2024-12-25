@@ -14,6 +14,8 @@ import StoreAll from './Componets/AllSkill_Text/AllCourseDetials/StoreAll';
 import AddTocard from './Componets/AllSkill_Text/AddTocard';
 import Chatbot from './Componets/Pages/ChatBot';
 import FileUpload from './Componets/FileUpload/FileUpload';
+import PaymentSuccess from './Componets/PaymentStates/SuccessPay';
+import CencalPay from './Componets/PaymentStates/CencalPay';
 
 function App() {
   const [showChat, setShowChat] = useState(false); 
@@ -35,6 +37,8 @@ function App() {
           <Route path="/Course-detail/:id" element={<StoreAll />} />
           <Route path="/Add-card" element={<AddTocard />} />
           <Route path="/UploadFile" element={<FileUpload/>} />
+          <Route path="/success" element={<PaymentSuccess/>} />
+          <Route path="/cancel" element={<CencalPay/>} />
 
         </Routes>
 

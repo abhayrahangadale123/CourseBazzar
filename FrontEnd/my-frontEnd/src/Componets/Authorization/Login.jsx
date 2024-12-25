@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 const Login = () => {
 
@@ -11,6 +11,8 @@ const Login = () => {
         password:""
       
     })
+
+    const navigate = useNavigate();
 
     let heandlogindata = (e) => {
         e.preventDefault();
@@ -23,8 +25,12 @@ const Login = () => {
         e.preventDefault();
         let res = await axios.post("http://localhost:3000/api/login", LoginData);
         if(res.data.token){
+       
             localStorage.setItem('token',res.data.token);
+            localStorage.setItem('username',res.data.data.username);
+            localStorage.setItem('email',res.data.data.email);
             alert("login succesfully");
+            navigate("/CreateCourse");
         }
         console.log(res);
          
@@ -101,8 +107,9 @@ const Login = () => {
                         </span>
                         <img src="" alt="" />
                     </div>
+                     
 
-                    <p className='text-center mt-10 p-4 rounded-lg'>
+                     <p className='text-center mt-10 p-4 rounded-lg'>
                         Don't have an account?
                         <Link to="/singup">
                             <span className='text-purple-600 font-bold underline'>Sign up</span>
@@ -113,6 +120,7 @@ const Login = () => {
                             <span className='text-purple-600 font-bold underline'>forget password</span>
                         </Link>
                     </p>
+                    
 
                     <p className='text-center text-purple-600 font-bold underline mt-5'>Log in with your organization</p>
             </form>
