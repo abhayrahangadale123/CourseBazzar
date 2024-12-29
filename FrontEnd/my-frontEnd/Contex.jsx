@@ -26,6 +26,9 @@ function MyComponent({ children }) {
     fetchCourses();
   }, [])
 
+  
+
+
 
   return (
     <Context.Provider value={{Courses,activeTab,setActiveTab,cartData, setCartData}}>

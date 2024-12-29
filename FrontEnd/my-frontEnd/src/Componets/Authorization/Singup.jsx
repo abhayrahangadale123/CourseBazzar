@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 const Signup = () => {
-
+    let navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: "",
-
         email: "",
         password: ""
     });
@@ -14,7 +13,7 @@ const Signup = () => {
 
     // Handle input changes
     const handleChange = (e) => {
-         
+    
 
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -24,8 +23,23 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let res = await axios.post("http://localhost:3000/api/signup", formData);
+         
         console.log(res, "singnformmm dataaaa");
+        if(res.data.token){
+       
+            localStorage.setItem('token',res.data.token);
+            localStorage.setItem('username',formData.username);
+            localStorage.setItem('email', formData.email);
+            localStorage.setItem('role', formData.role);
+          let role =   localStorage.getItem('role');
+            alert(" singup succesfully");
+           
 
+                navigate("/"); // home
+            
+        }      
+            
+            
     };
 
     return (

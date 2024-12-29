@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const UserMenu = () => {
     let [data, Setdata] = useState(false)
+    let navigate = useNavigate()
    
     // Logout for using
     let  LogOut= ()=>{
         localStorage.removeItem("token");
         Setdata(false);
+        navigate("/")
         window.location.reload();
     }
     
@@ -18,6 +21,7 @@ const UserMenu = () => {
         Setdata(!data)
     }
 
+    
     return (
         <div className="relative">
             <div className="flex gap-5">

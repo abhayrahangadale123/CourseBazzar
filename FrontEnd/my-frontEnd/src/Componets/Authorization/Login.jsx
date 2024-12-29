@@ -24,13 +24,26 @@ const Login = () => {
     let handleSubmit = async (e) => {
         e.preventDefault();
         let res = await axios.post("http://localhost:3000/api/login", LoginData);
+        console.log(res,"rwss");
+        
         if(res.data.token){
        
             localStorage.setItem('token',res.data.token);
             localStorage.setItem('username',res.data.data.username);
             localStorage.setItem('email',res.data.data.email);
-            alert("login succesfully");
-            navigate("/CreateCourse");
+            localStorage.setItem('role',res.data.data.role);
+          let role =   localStorage.getItem('role');
+          alert("login succesfully");
+        //   window.location.reload();
+            if(role=="user"){
+
+                navigate("/"); // home
+            }
+            else if(role=="admin"){
+
+                navigate("/admin/dashboard");
+            }
+            
         }
         console.log(res);
          

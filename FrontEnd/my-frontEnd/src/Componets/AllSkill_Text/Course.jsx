@@ -97,10 +97,15 @@ const Course = () => {
  
   const navigate = useNavigate();
 
+    
+  const AppproveData = Courses.filter(course => course.status=== "Approved");
+  console.log(AppproveData, "Approved Courses Data");
   
-      const filtered = activeTab == "All Course"  ? Courses  : Courses.filter(course => course.category === activeTab);
+     
+      const filtered = activeTab == "All Course"  ?  AppproveData  :  AppproveData.filter(course => course.category === activeTab);
      
    console.log(filtered,"ffffffffffffffffffffffffffffffffffffffffff");
+   
    
   const handleViewDetails = (id) => {
     console.log(id,"iddddffff");
